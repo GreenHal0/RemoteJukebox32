@@ -1,0 +1,2 @@
+This part handle the logic of transaction,
+That's what viewmodels call and it ask for the right service calls (pref, api, etc)

@@ -1,0 +1,2 @@
+That part handle the different sources of data,
+There can be api call, firebase ones, or either user_preferences
