@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"remotejukebox32","appId":"1:563677014806:android:d11386b6ab8be09464be37","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"remotejukebox32","configurations":{"android":"1:563677014806:android:d11386b6ab8be09464be37","ios":"1:563677014806:ios:f160b359b6e99fab64be37"}}}}}}

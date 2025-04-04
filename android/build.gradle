@@ -1,10 +1,11 @@
-allprojects {
+buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.4'  // If missing, add it
+        classpath 'com.android.tools.build:gradle:7.3.1' // Vérifiez la version actuelle utilisée
+        classpath 'com.google.gms:google-services:4.4.2' // Vérifie la dernière version sur le site de Firebase
     }
 }
 

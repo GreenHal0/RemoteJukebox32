@@ -5,9 +5,14 @@ import 'data/services/user_preferences.dart';
 import 'application/music_list_provider.dart';
 import 'presentation/views/main_screen.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   UserPreferences.initSharedPreference();
   runApp(MyApp());
 }
@@ -15,10 +20,6 @@ void main() async {
 class MyApp extends StatelessWidget {
 
   const MyApp({super.key});
-
-  Future<bool> _checkLoginStatus() async {
-    return UserPreferences.getPref(UserPreferences.KEY_USER_ID) != null;
-  }
 
   @override
   Widget build(BuildContext context) {
