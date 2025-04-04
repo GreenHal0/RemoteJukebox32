@@ -102,15 +102,16 @@ class _LibraryPageState extends State<LibraryPage> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.15,
                   width: MediaQuery.of(context).size.height * 0.15,
-                  child: music.imageUrl != null ?     // If image : image else : applogo
-                    Image.network(
-                      music.imageUrl!,
-                      fit: BoxFit.contain
-                    )
-                    : Image.asset(
-                      AppTheme.musicCoverMissing,
-                      fit: BoxFit.contain
-                  )
+                  child: Image.network(
+                    music.imageUrl ?? '',
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        AppTheme.musicCoverMissing,
+                        fit: BoxFit.contain,
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,

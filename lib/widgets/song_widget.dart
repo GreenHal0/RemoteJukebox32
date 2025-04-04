@@ -25,18 +25,19 @@ class SongWidget extends StatelessWidget {
       height: finalHeight,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             height: finalHeight,
             width: finalHeight,
-            child: music.imageUrl != null ?   // If image : image else : applogo
-              Image.network(
-                music.imageUrl!,
-                fit: BoxFit.contain
-              )
-              : Image.asset(
-                AppTheme.musicCoverMissing,
-                fit: BoxFit.contain
-            )
+            child: Image.network(
+              music.imageUrl ?? '',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  AppTheme.musicCoverMissing,
+                  fit: BoxFit.contain,
+                );
+              },
+            ),
           ),
           const SizedBox(
             width: 10,
