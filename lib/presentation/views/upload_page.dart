@@ -10,7 +10,6 @@ class UploadPage extends StatefulWidget {
 }
 
 class _UploadPageState extends State<UploadPage> {
-  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {

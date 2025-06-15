@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
 
-import 'app_color.dart';
-import 'app_dimens.dart';
 
 class AppTheme {
   //region Text Styles

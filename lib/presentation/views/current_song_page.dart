@@ -19,7 +19,7 @@ class _CurrentSongPageState extends State<CurrentSongPage> {
   @override
   void initState() {
     super.initState();
-    final musicProvider = Provider.of<MusicProvider>(context, listen: false);
+    //final musicProvider = Provider.of<MusicProvider>(context, listen: false);
     // musicProvider.fetchCurrentSong();
   }
 

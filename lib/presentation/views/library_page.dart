@@ -55,12 +55,12 @@ class _LibraryPageState extends State<LibraryPage> {
             ),
           ),
           Expanded(
-            child: musicListProvider.library.isNotEmpty
+            child: musicListProvider.filteredSongs.isNotEmpty
                 ? ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              itemCount: musicListProvider.library.length,
+              itemCount: musicListProvider.filteredSongs.length,
               itemBuilder: (context, index) {
-                final Music music = musicListProvider.library[index];
+                final Music music = musicListProvider.filteredSongs[index];
                 return GestureDetector(
                     onTap: () {
                       // Show image in full-screen dialog
@@ -73,13 +73,30 @@ class _LibraryPageState extends State<LibraryPage> {
                 );
               },
             )
-                : const Center(child: CircularProgressIndicator()),
-          ),
+
+              // If the list is empty, either display loading circle or no result found according to research bar emptiness
+                : _searchController.text.isEmpty
+                    ? const Center(
+                      child: CircularProgressIndicator()
+                    )
+                    : Center(
+                      child : Text(
+                        "No result found :/",
+                        style: TextStyle(
+                          color: AppColor.mainYellow,
+                          fontSize: 24,
+                        ),
+                      )
+                    ),
+          )
         ],
       ),
     );
   }
 
+  /**
+   * Show the QR code while clicking on song
+   */
   void showQrCode(BuildContext context, Music music) {
     // Manage the dialog
     showDialog(

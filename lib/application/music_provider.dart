@@ -7,7 +7,7 @@ import '../data/models/music_model.dart';
 class MusicProvider extends ChangeNotifier {
   Music _currentSong = Music.empty();
   List<MusicModel> _library = [];
-  List<MusicModel> _filteredSongs = [];
+  final List<MusicModel> _filteredSongs = [];
 
   Music get currentSong => _currentSong;
   List<MusicModel> get library => _library;
@@ -20,12 +20,25 @@ class MusicProvider extends ChangeNotifier {
 
   Future<void> fetchLibrary() async {
     _library = await MusicRepository.fetchLibrary();
+    _filteredSongs.addAll(_library);
     //fakeLibrary();
     notifyListeners();
   }
 
   void filterSongs(String filter) {
-    //TODO("Filter the songs by name or artist and return both in _filteredSongs")
+    _filteredSongs.clear();
+    filter = filter.toLowerCase();
+    if (filter.isEmpty)
+      _filteredSongs.addAll(_library);
+
+    else {
+      for (MusicModel music in _library) {
+        if (music.artist.toLowerCase().contains(filter) || music.title.toLowerCase().contains(filter)) {
+          _filteredSongs.add(music);
+        }
+      }
+    }
+
     notifyListeners();
   }
 
