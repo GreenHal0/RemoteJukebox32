@@ -41,12 +41,25 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         });
         widget.onItemSelected(index);
       },
-      items: _navOptions.map((option) {
+      items: _navOptions.asMap().entries.map((entry) {
+        final index = entry.key;
+        final option = entry.value;
+        final isSelected = index == MyBottomNavigationBar.currentIndex;
+
         return BottomNavigationBarItem(
-          icon: Image.asset(
-            option["icon"]!,
-            width: 24,
-            height: 24,
+          icon: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.yellow : Colors.transparent,
+              borderRadius: BorderRadius.circular(32),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Image.asset(
+              option["icon"]!,
+              width: 24,
+              height: 24,
+              color: isSelected ? Colors.black : Colors.white,
+            ),
           ),
           label: option["title"],
         );
