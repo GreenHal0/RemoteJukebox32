@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'data/services/user_preferences.dart';
-import 'application/music_list_provider.dart';
+import 'application/music_provider.dart';
 import 'presentation/views/main_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => MusicListProvider(), // Only one provider
+        create: (context) => MusicProvider(), // Only one provider
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Simple App',

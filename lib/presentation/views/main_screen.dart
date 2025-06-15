@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remote_jukebox_32/presentation/views/library_page.dart';
+import 'package:remote_jukebox_32/presentation/views/upload_page.dart';
 
 import '../common/my_bottom_navigation_bar.dart';
 import 'current_song_page.dart';
@@ -20,9 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const CurrentSongPage(),
     const LibraryPage(),
-    const CurrentSongPage(),
-    //const UploadPage(),
-    // Add more pages if needed
+    const UploadPage(),
   ];
 
   void _onItemTapped(int index) {

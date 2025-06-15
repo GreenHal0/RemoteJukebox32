@@ -4,4 +4,9 @@ class Music {
   final String? imageUrl;
 
   Music(this.artist, this.title, [this.imageUrl]);
+
+  Music.empty()
+    : artist = "",
+      title = "",
+      imageUrl = null;
 }

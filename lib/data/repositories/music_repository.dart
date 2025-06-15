@@ -7,6 +7,10 @@ class MusicRepository {
 
   static final MusicRepository instance = MusicRepository._();
 
+  static fetchCurrentSong() async {
+    return await FirebaseService.fetchCurrentSong();
+  }
+
   static Future<List<MusicModel>> fetchLibrary() async {
     return await FirebaseService.fetchLibrary();
   }

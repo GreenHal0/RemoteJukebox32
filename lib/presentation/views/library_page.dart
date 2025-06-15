@@ -4,7 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:remote_jukebox_32/presentation/theme/app_theme.dart';
 import 'package:remote_jukebox_32/widgets/song_widget.dart';
 
-import '../../application/music_list_provider.dart';
+import '../../application/music_provider.dart';
 import '../../domain/entities/music.dart';
 import '../theme/app_color.dart';
 class LibraryPage extends StatefulWidget {
@@ -20,15 +20,16 @@ class _LibraryPageState extends State<LibraryPage> {
   @override
   void initState() {
     super.initState();
-    final musicListProvider = Provider.of<MusicListProvider>(context, listen: false);
+    final musicListProvider = Provider.of<MusicProvider>(context, listen: false);
     musicListProvider.fetchLibrary();
   }
 
   @override
   Widget build(BuildContext context) {
-    final musicListProvider = context.watch<MusicListProvider>();
+    final musicListProvider = context.watch<MusicProvider>();
 
     return Scaffold(
+      backgroundColor: AppColor.background,
       body: Column(
         children: [
           const SizedBox(

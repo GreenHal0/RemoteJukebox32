@@ -16,7 +16,7 @@ class AppTheme {
   static const String uploadPageIcon = "assets/upload_icon.png";
 
   // Music management icons
-  static const String playMusicIcon = "assets/play_circle_icon.png";
+  static const String resumeMusicIcon = "assets/play_circle_icon.png";
   static const String pauseMusicIcon = "assets/play_arrow_icon.png";
   static const String skipNextIcon = "assets/skip_next_icon.png";
   static const String skipPreviousIcon = "assets/skip_previous_icon.png";

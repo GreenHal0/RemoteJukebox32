@@ -4,12 +4,19 @@ import 'package:remote_jukebox_32/domain/entities/music.dart';
 
 import '../data/models/music_model.dart';
 
-class MusicListProvider extends ChangeNotifier {
+class MusicProvider extends ChangeNotifier {
+  Music _currentSong = Music.empty();
   List<MusicModel> _library = [];
   List<MusicModel> _filteredSongs = [];
 
+  Music get currentSong => _currentSong;
   List<MusicModel> get library => _library;
   List<MusicModel> get filteredSongs => _filteredSongs;
+
+  Future<void> fetchCurrentSong() async {
+    _currentSong = await MusicRepository.fetchCurrentSong();
+    notifyListeners();
+  }
 
   Future<void> fetchLibrary() async {
     _library = await MusicRepository.fetchLibrary();
@@ -21,6 +28,18 @@ class MusicListProvider extends ChangeNotifier {
     //TODO("Filter the songs by name or artist and return both in _filteredSongs")
     notifyListeners();
   }
+
+  void volumeDown() {}
+
+  void volumeUp() {}
+
+  void skipPrevious() {}
+
+  void skipNext() {}
+
+  void pauseMusic() {}
+
+  void resumeMusic() {}
 
   void fakeLibrary() {
     library.add(MusicModel(artist: "artist 0", title: "title 0", imageUrl: null));
@@ -35,4 +54,5 @@ class MusicListProvider extends ChangeNotifier {
     library.add(MusicModel(artist: "artist 9", title: "title 9", imageUrl: null));
     notifyListeners();
   }
+
 }
